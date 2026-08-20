@@ -76,8 +76,20 @@ real source file):
 **Still needed:** the actual logo file (SVG preferred, PNG at 2000px+ acceptable). A screenshot
 can't be embedded in a print-quality cover.
 
-### Open
+### Decisions locked (session 2)
 
-- Is the book authored as "Isaiah Wright" or "Isaiah 'Zay' Wright"? Affects title page and voice.
-- OneVision vs. Aventis on the cover — dossier says the agency now operates as Aventis
-  Marketing, but the logo supplied is OneVision. Which mark goes on the book?
+| Question | Decision |
+|---|---|
+| Cover byline | **Isaiah Wright** — full name on the cover and title page |
+| Nickname | Introduce "Zay" **in the text**, early. Reads as: he tells you his real name, then tells you what his friends call you if you're close. That's a warmth beat, and it belongs in the intro or Chapter 1 cold open, not on the cover |
+| Cover mark | **OneVision** — the convergence logo supplied. Aventis is not on the cover |
+
+Note on the nickname: don't let it become a running gimmick. It lands once, early, the way it
+landed when he told me — "Isaiah Wright, or Zay if we are close." Then the book moves on.
+
+### Still open
+
+- **The actual logo file has not arrived.** The image renders in chat but no file reaches the
+  session. Cover build (Phase 6) needs a real file — see `build/assets/BRAND-ASSETS-NEEDED.md`.
+- Accent color: the brand is monochrome navy. One accent must be introduced for "Do This Now"
+  boxes, callouts, and checkboxes. Proposals due at CHECKPOINT 4.
