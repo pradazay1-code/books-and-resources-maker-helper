@@ -19,7 +19,7 @@ Everything before that moment is you asking for patience. Everything after it is
 
 ## The principle
 
-<div class="principle"><span class="label">The principle</span><p>Your client's first booked appointment is the activation point. Getting there fast is the highest-leverage thing you do in delivery, and everything in onboarding should be bent toward it.</p></div>
+<div class="principle"><span class="label">The principle</span><p>Your client's first booked appointment is the activation point. Getting there fast does more for retention than anything else in delivery, and everything in onboarding should be bent toward it.</p></div>
 
 ## Why most people get this wrong
 

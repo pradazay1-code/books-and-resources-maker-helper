@@ -1,0 +1,16 @@
+Input,Value,Notes
+Average job value,,Ask on the discovery call
+Close rate on estimates,,As a decimal e.g. 0.33
+Value of one appointment,=B2*B3,
+Gross margin on a job,,As a decimal e.g. 0.30
+Margin per appointment,=B4*B5,
+,,
+Appointments delivered per month,,
+Margin delivered per month,=B7*B6,
+Your monthly fee,,
+Ratio,=B8/B9,Should be obvious without a spreadsheet
+,,
+TIER,Setup,Monthly
+Starter,,
+Standard,,
+Full,,

@@ -83,6 +83,59 @@ def build(preview=False, retail=False):
     print(f"   {name}: {len(doc.pages)} pages, {size:.2f} MB")
     return len(doc.pages)
 
+ASSET_CSS = """
+@page{ size:8.5in 11in; margin:0.85in;
+  @bottom-center{ content:counter(page); font-family:"OV Sans"; font-size:8pt; color:#4A5058; } }
+html{ font-family:"OV Serif",Georgia,serif; font-size:10.5pt; line-height:15pt; color:#16191E; }
+h1{ font-family:"OV Sans"; font-size:22pt; font-weight:700; letter-spacing:-.025em; color:#1F3F68; margin:0 0 4pt; }
+h2{ font-family:"OV Sans"; font-size:13pt; font-weight:700; color:#1F3F68; margin:18pt 0 6pt; break-after:avoid; }
+h3{ font-family:"OV Sans"; font-size:10.5pt; font-weight:700; text-transform:uppercase; letter-spacing:.05em;
+    color:#16304F; margin:14pt 0 4pt; break-after:avoid; }
+blockquote{ border-left:3px solid #C0722C; background:#F6EADC; margin:10pt 0; padding:9pt 12pt;
+  font-size:9pt; line-height:13pt; color:#8A4E17; }
+blockquote p{ margin:0 0 4pt; } blockquote > :last-child{ margin-bottom:0; }
+pre{ font-family:"OV Mono"; font-size:8.4pt; line-height:12.6pt; background:#F4F0E8;
+  border-left:3px solid #1F3F68; padding:10pt 12pt; white-space:pre-wrap; break-inside:avoid; }
+code{ font-family:"OV Mono"; font-size:9pt; }
+pre code{ font-size:8.4pt; background:none; }
+table{ border-collapse:collapse; width:100%; margin:10pt 0; font-size:8.8pt; line-height:12.5pt; break-inside:avoid; }
+thead th{ font-family:"OV Sans"; font-size:7.5pt; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+  color:#fff; background:#1F3F68; text-align:left; padding:5pt 7pt; }
+tbody td{ padding:5pt 7pt; border-bottom:.5pt solid #D8D3C9; vertical-align:top; }
+tbody tr:nth-child(even){ background:#F4F0E8; }
+ul,ol{ padding-left:15pt; } li{ margin-bottom:3pt; }
+hr{ border:none; border-top:1px solid #D8D3C9; margin:14pt 0; }
+"""
+
+FONT_FACES = """
+@font-face { font-family:"OV Serif"; src:url("fonts/SourceSerif4-Regular.ttf") format("truetype"); font-weight:400; }
+@font-face { font-family:"OV Serif"; src:url("fonts/SourceSerif4-SemiBold.ttf") format("truetype"); font-weight:600; }
+@font-face { font-family:"OV Serif"; src:url("fonts/SourceSerif4-Italic.ttf") format("truetype"); font-weight:400; font-style:italic; }
+@font-face { font-family:"OV Sans"; src:url("fonts/Archivo-Regular.ttf") format("truetype"); font-weight:400; }
+@font-face { font-family:"OV Sans"; src:url("fonts/Archivo-Bold.ttf") format("truetype"); font-weight:700; }
+@font-face { font-family:"OV Mono"; src:url("fonts/JetBrainsMono-Regular.ttf") format("truetype"); font-weight:400; }
+"""
+
+def build_assets():
+    """Export every asset-vault file as a standalone PDF, and copy the editable originals."""
+    import shutil
+    src = BUILD/"assets"
+    dst = OUT/"assets"
+    dst.mkdir(parents=True, exist_ok=True)
+    css = CSS(string=FONT_FACES + ASSET_CSS, base_url=str(STYLE))
+    n = 0
+    for f in sorted(src.glob("*.md")):
+        if f.name == "BRAND-ASSETS-NEEDED.md":
+            continue
+        shutil.copy(f, dst/f.name)                      # editable original
+        body = render(f)
+        html = SKEL.format(body=body)
+        HTML(string=html, base_url=str(STYLE)).write_pdf(dst/(f.stem + ".pdf"), stylesheets=[css])
+        n += 1
+    for f in sorted(src.glob("*.csv")):
+        shutil.copy(f, dst/f.name)                      # spreadsheet-ready
+    print(f"   asset vault: {n} PDFs + editable .md/.csv -> output/assets/")
+
 if __name__ == "__main__":
     args = sys.argv[1:]
     retail = "--retail" in args
@@ -91,3 +144,4 @@ if __name__ == "__main__":
     else:
         build(preview=False, retail=retail)
         build(preview=True, retail=retail)
+        build_assets()

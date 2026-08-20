@@ -4,7 +4,7 @@
 source/*.pdf
 
 # Build artifacts
-output/*.pdf
+# output PDFs are committed as deliverables
 build/style/fonts/
 __pycache__/
 .venv/

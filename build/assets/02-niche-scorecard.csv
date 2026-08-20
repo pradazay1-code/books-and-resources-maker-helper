@@ -1,0 +1,9 @@
+Screen,Weight,Vertical A,Vertical B,Vertical C
+Owner is reachable directly,3,,,
+One extra job obviously covers your fee,3,,,
+Can afford you (job value),2,,,
+Easy to build a list of 200,2,,,
+Visibly in pain / already advertising,2,,,
+Growing category,1,,,
+You can stand talking about it daily,1,,,
+WEIGHTED TOTAL,,=SUMPRODUCT($B2:$B8,C2:C8),=SUMPRODUCT($B2:$B8,D2:D8),=SUMPRODUCT($B2:$B8,E2:E8)
