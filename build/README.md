@@ -4,7 +4,9 @@ Phase outputs. See `PROMPT.md` for the full workflow and `CLAUDE.md` for standin
 
 | File | Phase | Status |
 |---|---|---|
+| `00-author-notes.md` | running | Isaiah's raw voice material and locked decisions |
 | `01-extraction.md` | 1 — Ingest and extract | Done, awaiting CHECKPOINT 1 |
+| `01b-verification.md` | 1 — Source verification | Done — stats verified, compliance researched |
 | `02-method.md` | 2 — Extract the method | Blocked on CHECKPOINT 1 answers |
 | `03-outline.md` | 3 — Architect the book | Blocked on CHECKPOINT 2 |
 | `chapters/` | 4 — Draft | Blocked on CHECKPOINT 3 |

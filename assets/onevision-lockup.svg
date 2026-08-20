@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 780" width="800" height="780" role="img" aria-label="OneVision Marketing Agency">
+  <title>OneVision Marketing Agency lockup</title>
+  <g transform="translate(200 40)">
+    <g fill="none" stroke="#1F3F68" stroke-width="24" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10">
+      <g id="ov-arrow">
+        <path d="M200 8 L200 178"/>
+        <path d="M108 40 L200 132 L292 40"/>
+      </g>
+      <use href="#ov-arrow" transform="rotate(90 200 200)"/>
+      <use href="#ov-arrow" transform="rotate(180 200 200)"/>
+      <use href="#ov-arrow" transform="rotate(270 200 200)"/>
+    </g>
+  </g>
+  <!-- Wordmark uses a geometric fallback stack. Replace with outlined paths from the real
+       typeface before this ships on a product for sale. See build/assets/BRAND-ASSETS-NEEDED.md -->
+  <text x="400" y="620" text-anchor="middle" fill="#1F3F68"
+        font-family="Century Gothic, Questrial, Poppins, Futura, Avenir Next, sans-serif"
+        font-size="112">One Vision</text>
+  <text x="400" y="692" text-anchor="middle" fill="#1F3F68"
+        font-family="Century Gothic, Questrial, Poppins, Futura, Avenir Next, sans-serif"
+        font-size="38" letter-spacing="7">MARKETING AGENCY</text>
+</svg>

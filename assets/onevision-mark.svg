@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="OneVision convergence mark">
+  <title>OneVision mark</title>
+  <desc>Four arrows converging on a single center point.</desc>
+  <g fill="none" stroke="#1F3F68" stroke-width="24" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10">
+    <g id="ov-arrow">
+      <path d="M200 8 L200 178"/>
+      <path d="M108 40 L200 132 L292 40"/>
+    </g>
+    <use href="#ov-arrow" transform="rotate(90 200 200)"/>
+    <use href="#ov-arrow" transform="rotate(180 200 200)"/>
+    <use href="#ov-arrow" transform="rotate(270 200 200)"/>
+  </g>
+</svg>
