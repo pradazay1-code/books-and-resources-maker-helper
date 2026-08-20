@@ -24,7 +24,7 @@ def render(path):
 def ordered(d):
     return sorted(d.glob("*.md")) if d.exists() else []
 
-def collect(preview=False):
+def collect(preview=False, retail=False):
     parts = []
     for f in ordered(BUILD/"front"):
         parts.append(render(f))
@@ -41,6 +41,9 @@ def collect(preview=False):
         parts.append(render(f))
     if not preview:
         for f in ordered(BUILD/"back"):
+            # the clearance list is an internal page; never ships in the retail build
+            if retail and f.name.startswith("50-clearance"):
+                continue
             parts.append(render(f))
     return "\n".join(parts)
 
@@ -67,11 +70,17 @@ SKEL = """<!doctype html><html lang="en"><head><meta charset="utf-8">
 <title>The OneVision Playbook</title></head><body>{body}</body></html>"""
 
 def build(preview=False, retail=False):
-    front = collect(preview)
+    front = collect(preview, retail)
     # TOC is injected after the cover + copyright, before the system map
     body = front.replace("<!--TOC-->", toc_html())
     if retail:
+        # styled story-slot blocks
         body = re.sub(r'<div class="storyslot">.*?</div>', "", body, flags=re.S)
+        # inline [STORY NEEDED: ...] markers, with or without a code wrapper
+        body = re.sub(r'<code>\s*\[STORY NEEDED:.*?\]\s*</code>', "", body, flags=re.S)
+        body = re.sub(r'\[STORY NEEDED:[^\]]*\]', "", body, flags=re.S)
+        # any paragraph left empty by the above
+        body = re.sub(r'<p>\s*</p>', "", body)
     html = SKEL.format(body=body)
     dbg = OUT/("debug-preview.html" if preview else "debug-full.html")
     dbg.write_text(html, encoding="utf-8")

@@ -110,17 +110,25 @@ Length 1,500–3,000 words. If a chapter can't fill that with substance, merge i
 ## Build
 
 ```bash
-./build.sh                      # regenerate both PDFs into output/
-pip install weasyprint           # primary pipeline: MD → HTML + CSS Paged Media → PDF
-python3 -c "..."                 # see build.sh for the exact invocation
+pip install weasyprint markdown  # one-time
+./build.sh                       # full book + preview + asset vault
+./build.sh --preview             # preview only
+./build.sh --retail              # sellable build: strips story slots and the clearance page
 ```
 
-Pipeline preference: WeasyPrint first; Pandoc → Typst or Pandoc → XeLaTeX as fallback.
-Trim 8.5×11". Margins 0.9" outer, 1.1" inner. Body: humanist serif 11/16pt. Headings:
-geometric or grotesque sans, tight tracking. Embed all fonts. Final file under 25MB.
+Pipeline: Markdown (+ inline HTML components) → HTML → WeasyPrint → PDF, via `tools/build.py`.
+Trim 8.5×11". Margins 0.95" top/bottom, 0.9" outer, 1.1" inner, mirrored. Body Source Serif 4
+at 11/16pt; headings Archivo; script boxes JetBrains Mono. All OFL, committed under
+`build/style/fonts/`, embedded at build time. Palette: navy `#1F3F68`, amber `#C0722C`,
+paper `#F4F0E8`, ink `#16191E`.
 
 Outputs: `output/OneVision-Playbook.pdf`, `output/OneVision-Playbook-Preview.pdf`,
-`output/assets/`, `output/build-notes.md`.
+`output/assets/` (PDF + editable .md + .csv), `output/build-notes.md`.
+
+**Chapter files** live in `build/chapters/NNN-slug.md`, assembled in filename order. Wrapper
+needs `markdown="1"`; nested raw HTML must be unindented or Markdown parses it as a code block.
+Components: `.principle` `.pull` `.donow` `.script` `.warn` `.failure` `.metric` `.checklist`
+`.storyslot` `.attrib`.
 
 ## Working agreement
 

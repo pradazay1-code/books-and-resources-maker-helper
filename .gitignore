@@ -3,9 +3,7 @@
 # They stay local. Never commit them.
 source/*.pdf
 
-# Build artifacts
-# output PDFs are committed as deliverables
-build/style/fonts/
+# Build artifacts (output PDFs and fonts ARE committed - the build must be reproducible)
 __pycache__/
 .venv/
 *.pyc
