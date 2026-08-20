@@ -1,0 +1,12 @@
+# Third-party copyrighted source material — "NOT FOR DISTRIBUTION"
+# These are Alex Hormozi / Acquisition.com commercial books.
+# They stay local. Never commit them.
+source/*.pdf
+
+# Build artifacts
+output/*.pdf
+build/style/fonts/
+__pycache__/
+.venv/
+*.pyc
+.DS_Store
